@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -11,7 +12,7 @@
 
   <meta
     name="description"
-    content="HappyPaws — quality pet products for dogs and cats, delivered across the USA."
+    content="HappyPaws — Quality pet products for happy, healthy pets."
   >
 
   <meta
@@ -30,23 +31,23 @@
   >
 
   <title>
-    HappyPaws | Everything Your Pet Needs
+    HappyPaws | Everything Your Pet Loves
   </title>
 
   <link
     rel="stylesheet"
     href="style.css"
   >
+
 </head>
 
 
 <body>
 
-  <!-- ================================
-       NAVIGATION
-  ================================= -->
 
-  <header class="site-header">
+  <!-- NAVIGATION -->
+
+  <nav class="navbar">
 
     <a
       href="index.html"
@@ -56,13 +57,13 @@
     </a>
 
 
-    <nav class="nav-links">
+    <div class="nav-links">
 
-      <a href="#home">
+      <a href="index.html">
         Home
       </a>
 
-      <a href="#shop">
+      <a href="#products">
         Shop
       </a>
 
@@ -70,15 +71,15 @@
         About
       </a>
 
-      <a href="#support">
-        Support
+      <a href="#contact">
+        Contact
       </a>
 
-    </nav>
+    </div>
 
 
     <a
-      href="#shop"
+      href="#products"
       class="nav-button"
     >
       Shop Now
@@ -87,110 +88,82 @@
 
     <button
       class="menu-toggle"
-      id="menuToggle"
       type="button"
-      aria-label="Open navigation menu"
+      aria-label="Open menu"
       aria-expanded="false"
     >
+
       <span></span>
       <span></span>
       <span></span>
+
     </button>
+
+  </nav>
+
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <p class="eyebrow">
+        MADE FOR HAPPY PETS
+      </p>
+
+
+      <h1>
+
+        Everything your pet
+        <span>
+          deserves.
+        </span>
+
+      </h1>
+
+
+      <p class="hero-text">
+
+        Discover carefully selected products
+        for dogs, cats and the pets that make
+        your house feel like home.
+
+      </p>
+
+
+      <div class="hero-actions">
+
+        <a
+          href="#products"
+          class="button button-primary"
+        >
+          Shop Pet Essentials
+        </a>
+
+
+        <a
+          href="#about"
+          class="button button-secondary"
+        >
+          Learn About Us
+        </a>
+
+      </div>
+
+    </div>
 
   </header>
 
 
 
-  <!-- ================================
-       HERO
-  ================================= -->
+  <!-- PRODUCTS -->
 
   <main>
 
     <section
-      id="home"
-      class="hero"
-    >
-
-      <div class="hero-content">
-
-        <p class="eyebrow">
-          PET CARE MADE SIMPLE
-        </p>
-
-
-        <h1>
-
-          Everything your pet needs,
-
-          <span>
-            all in one place.
-          </span>
-
-        </h1>
-
-
-        <p class="hero-description">
-
-          Discover quality products for dogs and cats,
-          from everyday essentials to toys, grooming
-          products and comfortable beds.
-
-        </p>
-
-
-        <div class="hero-buttons">
-
-          <a
-            href="#shop"
-            class="button button-primary"
-          >
-            Shop Products
-          </a>
-
-
-          <a
-            href="#about"
-            class="button button-secondary"
-          >
-            Learn More
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <div class="hero-card">
-
-        <div class="hero-card-content">
-
-          <span class="hero-card-icon">
-            🐾
-          </span>
-
-          <p>
-            Happy pets.
-          </p>
-
-          <strong>
-            Happy homes.
-          </strong>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================================
-         CATEGORIES
-    ================================= -->
-
-    <section
-      id="shop"
+      id="products"
       class="section"
     >
 
@@ -199,210 +172,23 @@
         <div>
 
           <p class="eyebrow">
-            EXPLORE OUR STORE
+            OUR COLLECTION
           </p>
 
           <h2>
-            Shop by category
+            Pet favorites.
           </h2>
 
         </div>
 
 
         <p>
-          Find something special for every
-          member of your furry family.
+
+          Quality essentials designed
+          to keep your pets comfortable,
+          active and happy.
+
         </p>
-
-      </div>
-
-
-      <div class="category-grid">
-
-        <a
-          href="#products"
-          class="category-card"
-          data-category="Dog"
-        >
-
-          <span>
-            🐶
-          </span>
-
-          <h3>
-            Dogs
-          </h3>
-
-          <p>
-            Food, toys, beds and accessories.
-          </p>
-
-        </a>
-
-
-        <a
-          href="#products"
-          class="category-card"
-          data-category="Cat"
-        >
-
-          <span>
-            🐱
-          </span>
-
-          <h3>
-            Cats
-          </h3>
-
-          <p>
-            Comfortable and playful essentials.
-          </p>
-
-        </a>
-
-
-        <a
-          href="#products"
-          class="category-card"
-          data-category="Food"
-        >
-
-          <span>
-            🥣
-          </span>
-
-          <h3>
-            Food
-          </h3>
-
-          <p>
-            Everyday feeding essentials.
-          </p>
-
-        </a>
-
-
-        <a
-          href="#products"
-          class="category-card"
-          data-category="Toys"
-        >
-
-          <span>
-            🧸
-          </span>
-
-          <h3>
-            Toys
-          </h3>
-
-          <p>
-            Fun and enrichment for pets.
-          </p>
-
-        </a>
-
-
-        <a
-          href="#products"
-          class="category-card"
-          data-category="Grooming"
-        >
-
-          <span>
-            ✨
-          </span>
-
-          <h3>
-            Grooming
-          </h3>
-
-          <p>
-            Keep your pet clean and comfortable.
-          </p>
-
-        </a>
-
-
-        <a
-          href="#products"
-          class="category-card"
-          data-category="Beds"
-        >
-
-          <span>
-            🛏️
-          </span>
-
-          <h3>
-            Beds
-          </h3>
-
-          <p>
-            Cozy places for better rest.
-          </p>
-
-        </a>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================================
-         PRODUCTS
-    ================================= -->
-
-    <section
-      id="products"
-      class="section products-section"
-    >
-
-      <div class="section-heading">
-
-        <div>
-
-          <p class="eyebrow">
-            FEATURED PRODUCTS
-          </p>
-
-          <h2>
-            Pet favourites
-          </h2>
-
-        </div>
-
-
-        <div class="product-filters">
-
-          <button
-            class="filter-button active"
-            data-filter="all"
-            type="button"
-          >
-            All
-          </button>
-
-
-          <button
-            class="filter-button"
-            data-filter="Dog"
-            type="button"
-          >
-            Dogs
-          </button>
-
-
-          <button
-            class="filter-button"
-            data-filter="Cat"
-            type="button"
-          >
-            Cats
-          </button>
-
-        </div>
 
       </div>
 
@@ -412,7 +198,17 @@
         class="product-grid"
       >
 
-        <!-- Products generated by JavaScript -->
+        <div class="loading-state">
+
+          <h3>
+            Loading products...
+          </h3>
+
+          <p>
+            Please wait while we prepare the shop.
+          </p>
+
+        </div>
 
       </div>
 
@@ -420,9 +216,7 @@
 
 
 
-    <!-- ================================
-         ABOUT
-    ================================= -->
+    <!-- ABOUT -->
 
     <section
       id="about"
@@ -439,7 +233,6 @@
         <h2>
 
           Better products.
-
           <span>
             Happier pets.
           </span>
@@ -449,65 +242,21 @@
 
         <p>
 
-          HappyPaws is being built to make shopping
-          for your pets easier. Our goal is to bring
-          useful, quality pet products together in
-          one simple online store.
+          HappyPaws was created for pet owners
+          who want quality products without
+          making shopping complicated.
 
         </p>
 
 
         <p>
 
-          From everyday essentials to products that
-          make your pet's life more comfortable and
-          enjoyable, we're creating a store designed
-          around pets and the people who love them.
+          From everyday essentials to products
+          designed for play, comfort and care,
+          we're building a simple place for
+          pet lovers to find what they need.
 
         </p>
-
-      </div>
-
-
-      <div class="about-points">
-
-        <div>
-
-          <strong>
-            Quality
-          </strong>
-
-          <span>
-            Carefully selected products.
-          </span>
-
-        </div>
-
-
-        <div>
-
-          <strong>
-            Convenience
-          </strong>
-
-          <span>
-            Easy online shopping.
-          </span>
-
-        </div>
-
-
-        <div>
-
-          <strong>
-            Support
-          </strong>
-
-          <span>
-            Helpful customer assistance.
-          </span>
-
-        </div>
 
       </div>
 
@@ -515,13 +264,100 @@
 
 
 
-    <!-- ================================
-         SUPPORT
-    ================================= -->
+    <!-- WHY HAPPYPAWS -->
 
     <section
-      id="support"
-      class="section support-section"
+      class="section"
+    >
+
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            WHY HAPPYPAWS
+          </p>
+
+          <h2>
+            Shop with confidence.
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="features-grid">
+
+
+        <article class="feature-card">
+
+          <div class="feature-icon">
+            🐾
+          </div>
+
+          <h3>
+            Pet First
+          </h3>
+
+          <p>
+            Products selected with your
+            pet's comfort and happiness
+            in mind.
+          </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+          <div class="feature-icon">
+            📦
+          </div>
+
+          <h3>
+            US Shipping
+          </h3>
+
+          <p>
+            Convenient shipping options
+            for customers across the
+            United States.
+          </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+          <div class="feature-icon">
+            🔒
+          </div>
+
+          <h3>
+            Secure Checkout
+          </h3>
+
+          <p>
+            Your checkout and payment
+            information will be handled
+            through secure payment systems.
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- CONTACT -->
+
+    <section
+      id="contact"
+      class="section contact-section"
     >
 
       <div>
@@ -533,10 +369,9 @@
 
         <h2>
 
-          We've got your
-
+          We're here for
           <span>
-            back.
+            pet parents.
           </span>
 
         </h2>
@@ -544,9 +379,8 @@
 
         <p>
 
-          Have questions about products,
-          orders or shipping? Our support
-          system will help you find answers.
+          Have a question about an order,
+          product or shipping?
 
         </p>
 
@@ -554,11 +388,10 @@
 
 
       <a
-        href="#"
-        class="button button-primary"
-        id="supportButton"
+        href="mailto:support@happypaws.com"
+        class="contact-button"
       >
-        Ask HappyPaws
+        Contact HappyPaws
       </a>
 
     </section>
@@ -567,123 +400,26 @@
 
 
 
-  <!-- ================================
-       CART
-  ================================= -->
-
-  <aside
-    id="cartPanel"
-    class="cart-panel"
-    aria-hidden="true"
-  >
-
-    <div class="cart-header">
-
-      <h2>
-        Your Cart
-      </h2>
-
-
-      <button
-        id="closeCart"
-        type="button"
-        aria-label="Close cart"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div
-      id="cartItems"
-      class="cart-items"
-    >
-
-      <p>
-        Your cart is empty.
-      </p>
-
-    </div>
-
-
-    <div class="cart-footer">
-
-      <div>
-
-        <span>
-          Total
-        </span>
-
-        <strong id="cartTotal">
-          $0.00
-        </strong>
-
-      </div>
-
-
-      <button
-        id="checkoutButton"
-        class="button button-primary"
-        type="button"
-      >
-        Checkout
-      </button>
-
-    </div>
-
-  </aside>
-
-
-
-  <!-- ================================
-       CART OVERLAY
-  ================================= -->
-
-  <div
-    id="cartOverlay"
-    class="cart-overlay"
-  ></div>
-
-
-
-  <!-- ================================
-       FOOTER
-  ================================= -->
+  <!-- FOOTER -->
 
   <footer>
 
-    <div>
-
-      <a
-        href="index.html"
-        class="logo"
-      >
-        Happy<span>Paws</span>
-      </a>
-
-      <p>
-        Quality products for happier pets.
-      </p>
-
-    </div>
+    <p>
+      © 2026 HappyPaws
+    </p>
 
 
-    <div>
-
-      <p>
-        © 2026 HappyPaws
-      </p>
-
-      <p>
-        Company Store
-      </p>
-
-    </div>
+    <p>
+      Quality products for happy pets.
+    </p>
 
   </footer>
 
 
+
+  <!-- JAVASCRIPT -->
+
+  <script src="api.js"></script>
 
   <script src="script.js"></script>
 
