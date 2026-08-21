@@ -2,13 +2,28 @@
    HAPPYPAWS API CLIENT
 ========================================= */
 
-const API_BASE_URL =
+
+/*
+  DEVELOPMENT:
+  Uses the local backend.
+
+  PRODUCTION:
+  Change HAPPYPAWS_API_URL to the
+  deployed backend URL.
+
+  Example:
+
+  https://api.happypaws.com/api
+*/
+
+
+const HAPPYPAWS_API_URL =
   window.HAPPYPAWS_API_URL ||
   "http://localhost:5000/api";
 
 
 /* =========================================
-   GENERIC REQUEST
+   API REQUEST
 ========================================= */
 
 async function apiRequest(
@@ -16,36 +31,53 @@ async function apiRequest(
   options = {}
 ) {
 
+  const requestOptions = {
+
+    method:
+      options.method || "GET",
+
+    headers: {
+
+      "Content-Type":
+        "application/json",
+
+      ...(options.headers || {})
+
+    }
+
+  };
+
+
+  if (
+    options.body !== undefined
+  ) {
+
+    requestOptions.body =
+      options.body;
+
+  }
+
+
   const response =
     await fetch(
-      `${API_BASE_URL}${endpoint}`,
-      {
-        headers: {
-          "Content-Type":
-            "application/json",
-
-          ...(options.headers || {})
-        },
-
-        ...options
-      }
+      `${HAPPYPAWS_API_URL}${endpoint}`,
+      requestOptions
     );
 
 
   let data;
+
 
   try {
 
     data =
       await response.json();
 
-  } catch {
+  } catch (error) {
 
-    data = {
-      success: false,
-      message:
-        "The server returned an invalid response."
-    };
+    throw new Error(
+      "The server returned an invalid response."
+    );
 
   }
 
@@ -54,7 +86,7 @@ async function apiRequest(
 
     throw new Error(
       data.message ||
-      "Something went wrong."
+      `Request failed with status ${response.status}.`
     );
 
   }
@@ -66,7 +98,33 @@ async function apiRequest(
 
 
 /* =========================================
-   GET PRODUCTS
+   CHECK BACKEND
+========================================= */
+
+async function checkBackend() {
+
+  return apiRequest(
+    "/health"
+  );
+
+}
+
+
+/* =========================================
+   GET STORE INFORMATION
+========================================= */
+
+async function getStore() {
+
+  return apiRequest(
+    "/store"
+  );
+
+}
+
+
+/* =========================================
+   GET ALL PRODUCTS
 ========================================= */
 
 async function getProducts() {
@@ -79,12 +137,21 @@ async function getProducts() {
 
 
 /* =========================================
-   GET PRODUCT
+   GET SINGLE PRODUCT
 ========================================= */
 
 async function getProduct(
   productId
 ) {
+
+  if (!productId) {
+
+    throw new Error(
+      "Product ID is required."
+    );
+
+  }
+
 
   return apiRequest(
     `/products/${productId}`
@@ -101,8 +168,14 @@ async function searchProducts(
   query
 ) {
 
+  const search =
+    String(
+      query || ""
+    ).trim();
+
+
   return apiRequest(
-    `/products/search?q=${encodeURIComponent(query)}`
+    `/products/search?q=${encodeURIComponent(search)}`
   );
 
 }
@@ -116,15 +189,27 @@ async function createOrder(
   orderData
 ) {
 
+  if (!orderData) {
+
+    throw new Error(
+      "Order information is required."
+    );
+
+  }
+
+
   return apiRequest(
     "/orders",
     {
-      method: "POST",
+
+      method:
+        "POST",
 
       body:
         JSON.stringify(
           orderData
         )
+
     }
   );
 
@@ -132,13 +217,32 @@ async function createOrder(
 
 
 /* =========================================
-   CHECK BACKEND
+   API ERROR HELPER
 ========================================= */
 
-async function checkBackend() {
+function getApiErrorMessage(
+  error
+) {
 
-  return apiRequest(
-    "/health"
-  );
+  if (
+    error &&
+    error.message
+  ) {
 
+    return error.message;
+
+  }
+
+
+  return "Unable to connect to HappyPaws.";
 }
+
+
+/* =========================================
+   EXPORT API URL FOR DEBUGGING
+========================================= */
+
+console.log(
+  "HappyPaws API:",
+  HAPPYPAWS_API_URL
+);
