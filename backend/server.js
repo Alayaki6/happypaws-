@@ -29,6 +29,27 @@ app.use(
 
 
 /* =========================================
+   STORE INFORMATION
+========================================= */
+
+const store = {
+
+  name:
+    "HappyPaws",
+
+  country:
+    "United States",
+
+  currency:
+    "USD",
+
+  email:
+    "support@happypaws.com"
+
+};
+
+
+/* =========================================
    PRODUCTS
 ========================================= */
 
@@ -188,7 +209,28 @@ app.get(
 
 
 /* =========================================
-   GET PRODUCTS
+   STORE INFORMATION
+========================================= */
+
+app.get(
+  "/api/store",
+  (req, res) => {
+
+    res.json({
+
+      success:
+        true,
+
+      store
+
+    });
+
+  }
+);
+
+
+/* =========================================
+   GET ALL PRODUCTS
 ========================================= */
 
 app.get(
