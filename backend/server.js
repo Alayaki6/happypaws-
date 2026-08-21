@@ -1,9 +1,16 @@
+/* =========================================
+   HAPPYPAWS BACKEND
+========================================= */
+
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;
+const PORT =
+  process.env.PORT || 5000;
 
 
 /* =========================================
@@ -22,69 +29,136 @@ app.use(
 
 
 /* =========================================
-   STORE INFORMATION
-========================================= */
-
-const store = {
-  name: "HappyPaws",
-  country: "United States",
-  currency: "USD",
-  email: "support@happypaws.com"
-};
-
-
-/* =========================================
    PRODUCTS
 ========================================= */
 
 const products = [
+
   {
     id: 1,
-    name: "Premium Dog Bed",
-    category: "Dog",
-    price: 49.99,
-    stock: 25
+
+    name:
+      "Premium Dog Comfort Bed",
+
+    category:
+      "Dogs",
+
+    price:
+      49.99,
+
+    image:
+      "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=900&q=85",
+
+    description:
+      "A comfortable and supportive bed designed to give your dog a cozy place to rest."
+
   },
+
 
   {
     id: 2,
-    name: "Interactive Dog Toy",
-    category: "Dog",
-    price: 19.99,
-    stock: 40
+
+    name:
+      "Interactive Cat Toy",
+
+    category:
+      "Cats",
+
+    price:
+      19.99,
+
+    image:
+      "https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&w=900&q=85",
+
+    description:
+      "An interactive toy designed to keep curious cats entertained and active."
+
   },
+
 
   {
     id: 3,
-    name: "Cat Comfort Bed",
-    category: "Cat",
-    price: 39.99,
-    stock: 20
+
+    name:
+      "Adjustable Pet Collar",
+
+    category:
+      "Accessories",
+
+    price:
+      14.99,
+
+    image:
+      "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=85",
+
+    description:
+      "A comfortable adjustable collar suitable for everyday walks and adventures."
+
   },
+
 
   {
     id: 4,
-    name: "Cat Play Toy",
-    category: "Cat",
-    price: 14.99,
-    stock: 50
+
+    name:
+      "Pet Grooming Brush",
+
+    category:
+      "Grooming",
+
+    price:
+      17.99,
+
+    image:
+      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=900&q=85",
+
+    description:
+      "A grooming brush designed to help keep your pet's coat clean and healthy."
+
   },
+
 
   {
     id: 5,
-    name: "Pet Grooming Kit",
-    category: "Grooming",
-    price: 24.99,
-    stock: 30
+
+    name:
+      "Premium Pet Bowl",
+
+    category:
+      "Essentials",
+
+    price:
+      24.99,
+
+    image:
+      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=900&q=85",
+
+    description:
+      "A durable everyday bowl for food and water."
+
   },
+
 
   {
     id: 6,
-    name: "Premium Pet Food Bowl",
-    category: "Food",
-    price: 17.99,
-    stock: 35
+
+    name:
+      "Cozy Pet Blanket",
+
+    category:
+      "Comfort",
+
+    price:
+      29.99,
+
+    image:
+      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=85",
+
+    description:
+      "A soft blanket designed to give pets a warm and comfortable place to relax."
+
   }
+
 ];
 
 
@@ -97,9 +171,16 @@ app.get(
   (req, res) => {
 
     res.json({
-      success: true,
-      message: "HappyPaws backend is running.",
-      timestamp: new Date().toISOString()
+
+      success:
+        true,
+
+      message:
+        "HappyPaws API is running.",
+
+      timestamp:
+        new Date().toISOString()
+
     });
 
   }
@@ -107,24 +188,7 @@ app.get(
 
 
 /* =========================================
-   STORE INFORMATION
-========================================= */
-
-app.get(
-  "/api/store",
-  (req, res) => {
-
-    res.json({
-      success: true,
-      store
-    });
-
-  }
-);
-
-
-/* =========================================
-   GET ALL PRODUCTS
+   GET PRODUCTS
 ========================================= */
 
 app.get(
@@ -132,8 +196,12 @@ app.get(
   (req, res) => {
 
     res.json({
-      success: true,
+
+      success:
+        true,
+
       products
+
     });
 
   }
@@ -148,30 +216,38 @@ app.get(
   "/api/products/:id",
   (req, res) => {
 
-    const productId =
-      Number(req.params.id);
-
-
     const product =
       products.find(
         (item) =>
-          item.id === productId
+          String(item.id) ===
+          String(req.params.id)
       );
 
 
     if (!product) {
 
-      return res.status(404).json({
-        success: false,
-        message: "Product not found."
-      });
+      return res
+        .status(404)
+        .json({
+
+          success:
+            false,
+
+          message:
+            "Product not found."
+
+        });
 
     }
 
 
     res.json({
-      success: true,
+
+      success:
+        true,
+
       product
+
     });
 
   }
@@ -179,26 +255,30 @@ app.get(
 
 
 /* =========================================
-   PRODUCT SEARCH
+   SEARCH PRODUCTS
 ========================================= */
 
 app.get(
   "/api/products/search",
   (req, res) => {
 
-    const search =
+    const query =
       String(
         req.query.q || ""
       )
-      .trim()
-      .toLowerCase();
+        .trim()
+        .toLowerCase();
 
 
-    if (!search) {
+    if (!query) {
 
       return res.json({
-        success: true,
+
+        success:
+          true,
+
         products
+
       });
 
     }
@@ -207,19 +287,34 @@ app.get(
     const results =
       products.filter(
         (product) =>
+
           product.name
             .toLowerCase()
-            .includes(search) ||
+            .includes(query)
+
+          ||
 
           product.category
             .toLowerCase()
-            .includes(search)
+            .includes(query)
+
+          ||
+
+          product.description
+            .toLowerCase()
+            .includes(query)
+
       );
 
 
     res.json({
-      success: true,
-      products: results
+
+      success:
+        true,
+
+      products:
+        results
+
     });
 
   }
@@ -236,8 +331,7 @@ app.post(
 
     const {
       customer,
-      items,
-      shipping
+      items
     } = req.body;
 
 
@@ -248,114 +342,29 @@ app.post(
       items.length === 0
     ) {
 
-      return res.status(400).json({
-        success: false,
-        message:
-          "Customer information and cart items are required."
-      });
+      return res
+        .status(400)
+        .json({
+
+          success:
+            false,
+
+          message:
+            "Customer information and order items are required."
+
+        });
 
     }
-
-
-    let total = 0;
-
-
-    const orderItems =
-      items.map(
-        (item) => {
-
-          const product =
-            products.find(
-              (product) =>
-                product.id ===
-                Number(item.id)
-            );
-
-
-          if (!product) {
-            return null;
-          }
-
-
-          const quantity =
-            Math.max(
-              1,
-              Number(
-                item.quantity
-              ) || 1
-            );
-
-
-          const subtotal =
-            product.price *
-            quantity;
-
-
-          total += subtotal;
-
-
-          return {
-            productId: product.id,
-            name: product.name,
-            price: product.price,
-            quantity,
-            subtotal
-          };
-
-        }
-      )
-      .filter(Boolean);
-
-
-    if (
-      orderItems.length === 0
-    ) {
-
-      return res.status(400).json({
-        success: false,
-        message:
-          "No valid products were included in the order."
-      });
-
-    }
-
-
-    /*
-      IMPORTANT:
-
-      This creates an order record
-      for testing.
-
-      REAL PAYMENT PROCESSING WILL
-      BE CONNECTED THROUGH A SECURE
-      PAYMENT PROVIDER LATER.
-
-      We will NEVER put bank,
-      Bitcoin, PayPal or payment
-      secret keys in this frontend.
-    */
 
 
     const order = {
 
-      orderId:
+      id:
         `HP-${Date.now()}`,
 
       customer,
 
-      shipping:
-        shipping || null,
-
-      items:
-        orderItems,
-
-      total:
-        Number(
-          total.toFixed(2)
-        ),
-
-      currency:
-        "USD",
+      items,
 
       status:
         "pending_payment",
@@ -366,9 +375,16 @@ app.post(
     };
 
 
+    console.log(
+      "New HappyPaws order:",
+      order
+    );
+
+
     res.status(201).json({
 
-      success: true,
+      success:
+        true,
 
       message:
         "Order created successfully.",
@@ -382,20 +398,23 @@ app.post(
 
 
 /* =========================================
-   404
+   404 HANDLER
 ========================================= */
 
 app.use(
   (req, res) => {
 
-    res.status(404).json({
+    res
+      .status(404)
+      .json({
 
-      success: false,
+        success:
+          false,
 
-      message:
-        "Route not found."
+        message:
+          "Route not found."
 
-    });
+      });
 
   }
 );
@@ -413,17 +432,22 @@ app.use(
     next
   ) => {
 
-    console.error(error);
+    console.error(
+      error
+    );
 
 
-    res.status(500).json({
+    res
+      .status(500)
+      .json({
 
-      success: false,
+        success:
+          false,
 
-      message:
-        "Internal server error."
+        message:
+          "Internal server error."
 
-    });
+      });
 
   }
 );
@@ -438,7 +462,7 @@ app.listen(
   () => {
 
     console.log(
-      `HappyPaws backend running on port ${PORT}`
+      `HappyPaws API running on port ${PORT}`
     );
 
   }
